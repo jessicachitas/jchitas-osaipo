@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@rhds/elements": "^4.2.1",
+    "@rhds/icons": "^2.2.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
