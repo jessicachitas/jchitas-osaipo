@@ -1,22 +1,22 @@
 [
-    {
-        "label": "Projects",
-        "href": "#projects",
-        "external": false
-    },
-    {
-        "label": "Contribute",
-        "href": "#contribute",
-        "external": false
-    },
-    {
-        "label": "Blog",
-        "href": "https://www.redhat.com/en/blog",
-        "external": true
-    },
-    {
-        "label": "About",
-        "href": "https://www.redhat.com/en/about",
-        "external": true
-    }
+  {
+    "label": "About",
+    "href": "/about.html",
+    "external": false
+  },
+  {
+    "label": "Projects",
+    "href": "/projects.html",
+    "external": false
+  },
+  {
+    "label": "Memberships",
+    "href": "/memberships.html",
+    "external": false
+  },
+  {
+    "label": "Blog",
+    "href": "https://www.redhat.com/en/blog",
+    "external": true
+  }
 ]

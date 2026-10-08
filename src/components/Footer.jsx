@@ -17,7 +17,7 @@ function Footer() {
     <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
     <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
   </ul>
-  <rh-footer-copyright slot="links-secondary">© 2025 Red Hat</rh-footer-copyright>
+  <rh-footer-copyright slot="links-secondary">© 2026 Red Hat</rh-footer-copyright>
   <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
     <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
     <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
