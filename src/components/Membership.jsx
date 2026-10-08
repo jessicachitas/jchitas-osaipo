@@ -61,7 +61,7 @@ function Membership() {
           ecosystem to build resilient, secure, and sustainable technology
           together.
         </p>
-        <a className="btn-cta btn-cta-primary" href="/memberships.html">
+        <a className="btn-cta btn-cta-primary" href={`${import.meta.env.BASE_URL}memberships.html`}>
           Learn more
         </a>
       </div>

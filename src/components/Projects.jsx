@@ -97,7 +97,7 @@ function Projects() {
           Explore Red Hat’s contributions to thousands of open source projects
           across AI, cloud, Linux, automation, security, and more.
         </p>
-        <a className="btn-cta btn-cta-primary" href="/projects.html">
+        <a className="btn-cta btn-cta-primary" href={`${import.meta.env.BASE_URL}projects.html`}>
           Explore projects
         </a>
       </div>

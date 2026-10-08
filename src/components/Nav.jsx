@@ -10,13 +10,16 @@ function Nav() {
   return (
     <>
       <rh-navigation-primary role="navigation">
-    <a href="/" slot="logo">
+    <a href={import.meta.env.BASE_URL} slot="logo">
         <OsaipoLogo height="32" width="127" />
     </a>
 
     {navLinks.map((link) => (
       <rh-navigation-primary-item key={link.label}>
-        <a href={link.href}>
+        <a
+          href={link.external ? link.href : `${import.meta.env.BASE_URL}${link.href.replace(/^\//, '')}`}
+          {...(link.external && { target: '_blank', rel: 'noreferrer' })}
+        >
           {link.label}
           {link.external && (
             <>&nbsp;<rh-icon set="microns" icon="external-link"></rh-icon></>

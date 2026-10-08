@@ -10,10 +10,10 @@ function AboutHero() {
           ecosystems that power tomorrow’s enterprise.
         </p>
         <div className="about-hero-actions">
-          <a className="btn-cta btn-cta-primary" href="/projects.html">
+          <a className="btn-cta btn-cta-primary" href={`${import.meta.env.BASE_URL}projects.html`}>
             Explore our upstream portfolio
           </a>
-          <a className="btn-cta btn-cta-secondary" href="/#contact-us">
+          <a className="btn-cta btn-cta-secondary" href={`${import.meta.env.BASE_URL}#contact-us`}>
             Get in touch
           </a>
         </div>
