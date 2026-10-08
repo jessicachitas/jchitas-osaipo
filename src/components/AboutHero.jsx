@@ -1,0 +1,32 @@
+import "@rhds/elements/rh-icon/rh-icon.js";
+
+function AboutHero() {
+  return (
+    <section className="hero-container" aria-labelledby="h-about-hero">
+      <div className="hero-content about-hero-content">
+        <h1 id="h-about-hero">We build upstream.</h1>
+        <p>
+          We help open source communities build the technologies, standards and
+          ecosystems that power tomorrow’s enterprise.
+        </p>
+        <div className="about-hero-actions">
+          <a className="btn-cta btn-cta-primary" href="/projects.html">
+            Explore our upstream portfolio
+          </a>
+          <a className="btn-cta btn-cta-secondary" href="/#contact-us">
+            Get in touch
+          </a>
+        </div>
+      </div>
+
+      <div className="about-hero-bubble-group" aria-hidden="true">
+        <span className="about-hero-project-big-bubble"></span>
+        <span className="about-hero-photo-bubbles about-hero-photo-a"></span>
+        <span className="about-hero-photo-bubbles about-hero-photo-b"></span>
+        <span className="about-hero-photo-bubbles about-hero-photo-c"></span>
+      </div>
+    </section>
+  );
+}
+
+export default AboutHero;
