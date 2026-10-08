@@ -1354,7 +1354,7 @@ layer(tokens);
   /* ---- Timeline.jsx (about.jsx page) ---- */
   .timeline {
     --timeline-top-color: var(--rh-color-brand-red);
-    --timeline-bottom-color: var(--rh-color-interactive-secondary-default);
+    --timeline-bottom-color: light-dark(var(--rh-color-surface-dark), var(--rh-color-surface-light));
     --timeline-card-width: 220px;
     --timeline-gap-width: 32px;
     --timeline-dot-size: 14px;
@@ -1362,7 +1362,7 @@ layer(tokens);
     border-radius: 24px;
     background: light-dark(
       var(--rh-color-white, #fff),
-      var(--rh-color-surface-dark)
+      var(--rh-color-interactive-secondary-default-on-light)
     );
     box-shadow:
       0 1px 3px rgba(0, 0, 0, 0.08),
@@ -1407,7 +1407,8 @@ layer(tokens);
       var(--rh-space-4xl);
     background: linear-gradient(
       to right,
-      light-dark(var(--rh-color-white, #fff), var(--rh-color-surface-dark)) 70%,
+      light-dark(var(--rh-color-white, #fff), 
+      var(--rh-color-interactive-secondary-default-on-light)) 70%,
       transparent
     );
   }
@@ -1508,7 +1509,7 @@ layer(tokens);
     border-radius: 12px;
     background: light-dark(
       var(--rh-color-surface-lightest, #fff),
-      var(--rh-color-surface-darkest)
+      var(--rh-color-surface-dark)
     );
     border: 1px solid transparent;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
@@ -1568,7 +1569,9 @@ layer(tokens);
     box-shadow: 0 0 0 4px
       color-mix(in srgb, var(--timeline-top-color) 25%, transparent);
     flex-shrink: 0;
-    margin-right: 5%;
+    @media screen and (max-height: 768px) {
+      margin-right: 5%;
+    }
   }
 
   .timeline-node-bottom .timeline-dot {
@@ -1825,8 +1828,8 @@ layer(tokens);
     border-radius: 16px;
     overflow: hidden;
     background: light-dark(
-      var(--rh-color-white, #fff),
-      var(--rh-color-surface-darkest)
+      var(--rh-color-surface-lightest),
+      var(--rh-color-interactive-secondary-default-on-dark)
     );
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     text-decoration: none;
