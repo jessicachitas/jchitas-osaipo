@@ -1,9 +1,9 @@
 import navLinks from '../data/nav_links.json'
 import OsaipoLogo from './OsaipoLogo'
+import ThemeToggle from './ThemeToggle'
 import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js'
 import '@rhds/elements/rh-navigation-primary/rh-navigation-primary-item.js'
 import '@rhds/elements/rh-icon/rh-icon.js'
-import '@rhds/elements/rh-scheme-toggle/rh-scheme-toggle.js'
 import '@rhds/elements/rh-navigation-primary/rh-navigation-primary-lightdom.css'
 
 function Nav() {
@@ -27,7 +27,7 @@ function Nav() {
         </a>
       </rh-navigation-primary-item>
     ))}
-    <rh-scheme-toggle slot="event"></rh-scheme-toggle>
+    <ThemeToggle slot="event" />
 </rh-navigation-primary>
     </>
   )

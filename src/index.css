@@ -21,6 +21,11 @@ layer(tokens);
     var(--rh-color-gray-95),
     var(--rh-color-white)
   );
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 @layer base {
@@ -33,7 +38,6 @@ layer(tokens);
 
   body {
     color: var(--rh-color-text-primary);
-    color-scheme: light dark;
     background-color: light-dark(
       var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-darkest)
@@ -171,8 +175,25 @@ layer(tokens);
     color: var(--rh-color-gray-50);
   }
 
-  rh-scheme-toggle {
-    --rh-color-interactive-primary-default: var(--rh-color-brand-red);
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--rh-space-2xl, 32px);
+    block-size: var(--rh-space-2xl, 32px);
+    border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border-radius: var(--rh-border-radius-default, 3px);
+    background: none;
+    color: var(--rh-color-text-primary);
+    cursor: pointer;
+  }
+
+  .theme-toggle:hover,
+  .theme-toggle:focus-visible {
+    background: light-dark(
+      var(--rh-color-surface-light, #e0e0e0),
+      var(--rh-color-surface-dark, #383838)
+    );
   }
 
   .osaipo-logo-wordmark {
