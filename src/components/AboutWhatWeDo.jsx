@@ -28,8 +28,7 @@ function AboutWhatWeDo() {
   return (
     <section className="about-what-we-do" aria-labelledby="h-about-what-we-do">
       <div className="container about-section-intro">
-        <span className="about-eyebrow">What we do</span>
-        <h2 id="h-about-what-we-do">Community is our product</h2>
+        <h1 id="h-about-what-we-do">Community is our product</h1>
         <p>
           Our work isn&rsquo;t measured in products we ship. It&rsquo;s measured in communities we
           strengthen, standards we influence, contributors we enable and technologies we help

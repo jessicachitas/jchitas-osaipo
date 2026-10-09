@@ -1087,17 +1087,6 @@ layer(tokens);
     line-height: var(--rh-line-height-body-text);
   }
 
-  .about-eyebrow {
-    display: block;
-    font-family: var(--rh-font-family-heading);
-    font-size: var(--rh-font-size-body-text-sm);
-    font-weight: var(--rh-font-weight-heading-medium);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--rh-color-brand-red);
-    margin-block-end: var(--rh-space-sm);
-  }
-
   .about-icon-badge {
     display: flex;
     align-items: center;
