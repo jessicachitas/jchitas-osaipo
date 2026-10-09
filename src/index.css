@@ -1128,10 +1128,6 @@ layer(tokens);
     position: relative;
     z-index: -1;
     pointer-events: none;
-
-    @media (max-width: 768px) {
-      display: none;
-    }
   }
 
   .about-hero-content p {
@@ -1169,6 +1165,11 @@ layer(tokens);
     );
     inset-inline-start: -4%;
     inset-block-start: 9%;
+    @media (max-width: 768px) {
+      inline-size: 250%;
+      inset-inline-start: -75%;
+      inset-block-start: 20%;
+    }
   }
 
   .about-hero-photo-bubbles {
@@ -1273,6 +1274,12 @@ layer(tokens);
     inset-inline-start: 38.5%;
     inset-block-start: 45%;
     clip-path: inset(0 16.89% 0 0);
+    @media (max-width: 768px) {
+      clip-path: none;
+      inline-size: 270%;
+      inset-inline-start: -75%;
+      inset-block-start: 80%;
+    }
   }
 
   .about-principles-grid {
