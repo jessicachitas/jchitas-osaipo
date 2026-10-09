@@ -887,7 +887,7 @@ layer(tokens);
     .hero-container {
       aspect-ratio: auto;
       height: auto;
-      min-height: 100dvh;
+      min-height: var(--app-vh, 100svh);
     }
 
     .projects-container {
@@ -895,7 +895,7 @@ layer(tokens);
     }
 
     #explore-projects {
-      min-height: 100dvh;
+      min-height: var(--app-vh, 100svh);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -908,12 +908,12 @@ layer(tokens);
 
     .stat-cluster {
       position: relative;
-      min-height: 100dvh;
+      min-height: var(--app-vh, 100svh);
       margin-block-end: 0;
     }
 
     .stats-scale-copy {
-      min-height: 100dvh;
+      min-height: var(--app-vh, 100svh);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -922,7 +922,7 @@ layer(tokens);
 
     .membership-container {
       aspect-ratio: auto;
-      min-height: 100dvh;
+      min-height: var(--app-vh, 100svh);
     }
 
     .membership-copy {
@@ -935,7 +935,7 @@ layer(tokens);
     }
 
     #contact-us {
-      min-height: 100dvh;
+      min-height: var(--app-vh, 100svh);
     }
 
     /* Grey decorative bubbles — hidden on mobile elsewhere in this file;
