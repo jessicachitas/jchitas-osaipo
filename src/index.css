@@ -24,7 +24,7 @@ layer(tokens);
   color-scheme: light;
 }
 
-:root[data-theme='dark'] {
+:root[data-theme="dark"] {
   color-scheme: dark;
 }
 
@@ -212,7 +212,7 @@ layer(tokens);
   .hero-container {
     display: flex;
     position: relative;
-    z-index: -1;
+    z-index: 0;
     width: 100%;
     aspect-ratio: 1920 / 1000;
     padding: clamp(1.5rem, 7.8125vw, 150px);
@@ -970,12 +970,13 @@ layer(tokens);
   .btn-cta-primary {
     background: var(--rh-color-brand-red);
     color: var(--rh-color-white, #fff);
-    border-color: var(--rh-color-brand-red);
 
     &:hover,
     &:focus-visible {
-      background: var(--rh-color-interactive-primary-hover);
-      border-color: var(--rh-color-interactive-primary-hover);
+      background: light-dark(
+        var(--rh-color-brand-red-dark),
+        var(--rh-color-brand-red-light)
+      );
       color: var(--rh-color-white, #fff);
     }
   }
@@ -1129,7 +1130,6 @@ layer(tokens);
   .about-what-we-do {
     padding-block: var(--rh-space-4xl);
     padding-inline: var(--rh-space-2xl);
-
     @media (max-width: 768px) {
       padding-inline: var(--rh-space-lg);
     }
@@ -1393,7 +1393,10 @@ layer(tokens);
   /* ---- Timeline.jsx (about.jsx page) ---- */
   .timeline {
     --timeline-top-color: var(--rh-color-brand-red);
-    --timeline-bottom-color: light-dark(var(--rh-color-surface-dark), var(--rh-color-surface-light));
+    --timeline-bottom-color: light-dark(
+      var(--rh-color-surface-dark),
+      var(--rh-color-surface-light)
+    );
     --timeline-card-width: 220px;
     --timeline-gap-width: 32px;
     --timeline-dot-size: 14px;
@@ -1446,8 +1449,11 @@ layer(tokens);
       var(--rh-space-4xl);
     background: linear-gradient(
       to right,
-      light-dark(var(--rh-color-white, #fff), 
-      var(--rh-color-interactive-secondary-default-on-light)) 70%,
+      light-dark(
+          var(--rh-color-white, #fff),
+          var(--rh-color-interactive-secondary-default-on-light)
+        )
+        70%,
       transparent
     );
   }
@@ -1778,9 +1784,9 @@ layer(tokens);
       padding-block: var(--rh-space-sm);
       background: transparent;
       color: light-dark(
-      var(--rh-color-surface-lightest, #fff),
-      var(--rh-color-text-primary) 
-    );;
+        var(--rh-color-surface-lightest, #fff),
+        var(--rh-color-text-primary)
+      );
       font-size: var(--rh-font-size-body-text-md);
     }
   }
