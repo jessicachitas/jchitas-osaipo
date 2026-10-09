@@ -23,7 +23,7 @@ function AboutWhatsNext() {
     <section className="about-whats-next" aria-labelledby="h-about-whats-next">
       <span className="about-whats-next-big-bubble"></span>
       <div className="container about-section-intro">
-        <h2 id="h-about-whats-next">Open source powers what&rsquo;s next in AI</h2>
+        <h1 id="h-about-whats-next">Open source powers what&rsquo;s next in AI</h1>
         <p>
           AI is becoming foundational infrastructure. We believe that infrastructure should
           remain open, inspectable and adaptable&mdash;so organizations can innovate without

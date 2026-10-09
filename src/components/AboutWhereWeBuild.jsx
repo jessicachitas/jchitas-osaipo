@@ -78,7 +78,7 @@ function AboutWhereWeBuild() {
   return (
     <section className="about-where-we-build" aria-labelledby="h-about-where-we-build">
       <div className="container about-section-intro">
-        <h2 id="h-about-where-we-build">Where we build upstream</h2>
+        <h1 id="h-about-where-we-build">Where we build upstream</h1>
         <p>
           Our portfolio spans the technology layers and industries that define the modern hybrid
           cloud&mdash;and increasingly, the AI stack.

@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')).render(
         <AboutWhereWeBuild />
         <section id="about-history" aria-labelledby="h-about-history">
           <div className="container about-history-intro">
-            <h2 id="h-about-history">30 years of open source at Red Hat</h2>
+            <h1 id="h-about-history">30 years of open source at Red Hat</h1>
             <p>
               From a fledgling Linux distributor to a cornerstone of enterprise open source and
               agentic AI, explore the milestones that shaped Red Hat&rsquo;s journey &mdash; from
