@@ -20,16 +20,19 @@ const CAROUSEL_SPEED_PX_PER_SEC = 60;
 function Projects() {
   const carouselRef = useRef(null);
   const trackRef = useRef(null);
+  const distanceRef = useRef(0);
 
   useLayoutEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     const updateLoopDistance = () => {
+      const firstCard = track.children[0];
       const seamCard = track.children[projectCards.length];
-      if (!seamCard) return;
-      const distance = seamCard.offsetLeft;
+      if (!firstCard || !seamCard) return;
+      const distance = seamCard.offsetLeft - firstCard.offsetLeft;
       if (!distance) return;
+      distanceRef.current = distance;
       track.style.setProperty("--carousel-distance", `${distance}px`);
       track.style.setProperty(
         "--carousel-duration",
@@ -38,8 +41,39 @@ function Projects() {
     };
 
     updateLoopDistance();
-    window.addEventListener("resize", updateLoopDistance);
-    return () => window.removeEventListener("resize", updateLoopDistance);
+    const resizeObserver = new ResizeObserver(updateLoopDistance);
+    resizeObserver.observe(track);
+    return () => resizeObserver.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const resetIfPastSeam = () => {
+      const distance = distanceRef.current;
+      if (distance && carousel.scrollLeft >= distance) {
+        carousel.scrollLeft -= distance;
+      }
+    };
+
+    if ("onscrollend" in window) {
+      carousel.addEventListener("scrollend", resetIfPastSeam, { passive: true });
+      return () =>
+        carousel.removeEventListener("scrollend", resetIfPastSeam);
+    }
+
+    let settleTimer;
+    const handleScroll = () => {
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(resetIfPastSeam, 120);
+    };
+
+    carousel.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      clearTimeout(settleTimer);
+      carousel.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
