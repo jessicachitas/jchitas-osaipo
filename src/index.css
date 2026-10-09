@@ -912,6 +912,56 @@ layer(tokens);
       margin-block-end: 0;
     }
 
+    /* Size/position the bubbles off viewport width (not the tall 100svh
+       section) and center the cluster vertically via top:50% + transform,
+       so they stay tightly overlapped like the desktop version regardless
+       of how tall the full-screen section ends up being. */
+    .stat-years {
+      inset-inline-start: -20%;
+      inset-inline-end: auto;
+      inset-block-start: 50%;
+      inline-size: 120%;
+      transform: translateY(-50%);
+
+      strong {
+        font-size: 10rem;
+      }
+      span {
+        font-size: 5rem;
+      }
+    }
+
+    .stat-projects {
+      inset-inline-start: auto;
+      inset-inline-end: 0%;
+      inset-block-start: 45%;
+      inline-size: 35%;
+      transform: translateY(calc(-50% - 32vw));
+
+      strong {
+        font-size: 2rem;
+      }
+      span {
+        font-size: 1rem;
+      }
+    }
+
+    .stat-contributors {
+      inset-inline-start: auto;
+      inset-inline-end: -10%;
+      inset-block-start: 55%;
+      inset-block-end: auto;
+      inline-size: 50%;
+      transform: translateY(calc(-50% + 34vw));
+
+      strong {
+        font-size: 2.75rem;
+      }
+      span {
+        font-size: 1.2rem;
+      }
+    }
+
     .stats-scale-copy {
       min-height: var(--app-vh, 100svh);
       display: flex;
@@ -952,21 +1002,21 @@ layer(tokens);
 
     .hero-project-big-bubble {
       display: block;
-      inline-size: 295%;
-      margin-inline-start: -100%;
+      inline-size: 218%;
+      margin-inline-start: -60%;
       margin-block-start: 25%;
     }
 
     .stats-memberships-big-bubble {
       display: block;
-      inline-size: 290%;
-      margin-inline-start: -125%;
-      margin-block-start: 350%;
+      inline-size: 240%;
+      margin-inline-start: -110%;
+      margin-block-start: 250%;
     }
 
     .contact-bubble {
-      inline-size: 220%;
-      margin-inline-start: -50%;
+      inline-size: 180%;
+      margin-inline-start: -55%;
       margin-block-start: 25%;
     }
   }
