@@ -1844,7 +1844,6 @@ layer(tokens);
       var(--rh-color-interactive-secondary-default-on-light)
     );
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    color: var(--rh-color-text-secondary);
 
     input {
       inline-size: 100%;
@@ -1853,8 +1852,8 @@ layer(tokens);
       padding-block: var(--rh-space-sm);
       background: transparent;
       color: light-dark(
-        var(--rh-color-surface-lightest, #fff),
-        var(--rh-color-text-primary)
+        var(--rh-color-text-primary),
+        var(--rh-color-text-secondary)
       );
       font-size: var(--rh-font-size-body-text-md);
     }
