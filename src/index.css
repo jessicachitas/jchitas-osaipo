@@ -1041,6 +1041,25 @@ layer(tokens);
   }
 
   /* ---- AboutHero.jsx (shares .hero-container/.hero-content layout with Welcome.jsx) ---- */
+  .about-hero-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero-wrap > * {
+    grid-area: 1 / 1;
+  }
+
+  .about-hero-big-bubble-frame {
+    position: relative;
+    z-index: -1;
+    pointer-events: none;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
   .about-hero-content p {
     color: var(--rh-color-text-secondary);
     line-height: var(--rh-line-height-body-text);
@@ -1067,7 +1086,6 @@ layer(tokens);
 
   .about-hero-project-big-bubble {
     position: absolute;
-    z-index: 0;
     border-radius: 50%;
     inline-size: 73%;
     aspect-ratio: 1;
