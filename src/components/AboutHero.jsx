@@ -22,8 +22,6 @@ function AboutHero() {
 
         <div className="about-hero-bubble-group" aria-hidden="true">
           <span className="about-hero-photo-bubbles about-hero-photo-a"></span>
-          <span className="about-hero-photo-bubbles about-hero-photo-b"></span>
-          <span className="about-hero-photo-bubbles about-hero-photo-c"></span>
         </div>
       </section>
 

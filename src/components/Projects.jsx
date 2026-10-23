@@ -58,9 +58,10 @@ function Projects() {
     };
 
     if ("onscrollend" in window) {
-      carousel.addEventListener("scrollend", resetIfPastSeam, { passive: true });
-      return () =>
-        carousel.removeEventListener("scrollend", resetIfPastSeam);
+      carousel.addEventListener("scrollend", resetIfPastSeam, {
+        passive: true,
+      });
+      return () => carousel.removeEventListener("scrollend", resetIfPastSeam);
     }
 
     let settleTimer;
@@ -128,10 +129,15 @@ function Projects() {
       <div className="container explore-projects-intro">
         <h1 id="h-explore-projects">Explore projects</h1>
         <p>
-          Explore Red Hat’s contributions to thousands of open source projects
-          across AI, cloud, Linux, automation, security, and more.
+          We contribute to the upstream projects powering AI, hybrid cloud,
+          Linux, automation, security, and more. By collaborating with
+          communities, we build better technology for Red Hat’s product
+          portfolio and the broader open source ecosystem.
         </p>
-        <a className="btn-cta btn-cta-primary" href={`${import.meta.env.BASE_URL}projects.html`}>
+        <a
+          className="btn-cta btn-cta-primary"
+          href={`${import.meta.env.BASE_URL}projects.html`}
+        >
           Explore projects
         </a>
       </div>
