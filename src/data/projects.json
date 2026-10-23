@@ -41,7 +41,7 @@
   },
   {
     "name": "Anuket",
-    "href": "https://www.lfnetworking.org/projects/anuket/",
+    "href": "https://anuket.io/",
     "category": "Telco",
     "featured": false,
     "logo": "anuket.svg",
@@ -152,8 +152,8 @@
     "description": "Carvel is an open-source project focused on Cloud-Native Orchestration & Containers."
   },
   {
-    "name": "CentOS Stream",
-    "href": "https://gitlab.com/redhat/centos-stream",
+    "name": "CentOS",
+    "href": "https://www.centos.org/",
     "category": "Operating System Foundation",
     "featured": true,
     "logo": "centos-stream.svg",
