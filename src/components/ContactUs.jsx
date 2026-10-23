@@ -26,7 +26,13 @@ function ContactUs() {
         <ul className="contact-list">
           {contactLinks.map((link) => (
             <li key={`${link.label}-${link.href}`}>
-              <a href={link.href} target="_blank" rel="noreferrer">
+              <a
+                className="contact-link"
+                data-label={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span className="contact-icon-list">
                   {link.icon && link.icon.set === 'custom' ? (
                     <img src={iconUrls[link.icon.src]} alt="" />
@@ -34,7 +40,7 @@ function ContactUs() {
                     link.icon && <rh-icon set={link.icon.set} icon={link.icon.icon}></rh-icon>
                   )}
                 </span>
-                {link.label}
+                <span className="visually-hidden">{link.label}</span>
               </a>
             </li>
           ))}
