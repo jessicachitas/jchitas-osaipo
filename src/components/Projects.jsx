@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef } from "react";
 import projects from "../data/projects.json";
 
-const logoModules = import.meta.glob("../assets/project-logos/*", {
+const logoModules = import.meta.glob("../assets/logos/*", {
   eager: true,
   import: "default",
 });

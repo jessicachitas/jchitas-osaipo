@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import '@rhds/elements/rh-icon/rh-icon.js'
 import projects from '../data/projects.json'
 
-const logoModules = import.meta.glob('../assets/project-logos/*', {
+const logoModules = import.meta.glob('../assets/logos/*', {
   eager: true,
   import: 'default',
 })
