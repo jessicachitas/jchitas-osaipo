@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import '@rhds/elements/rh-icon/rh-icon.js'
-import memberships from '../data/memberships.json'
+import stewardships from '../data/stewardships.json'
 
-const logoModules = import.meta.glob('../assets/membership-logos/*', {
+const logoModules = import.meta.glob('../assets/logos/*', {
   eager: true,
   import: 'default',
 })
@@ -10,13 +10,13 @@ const logoUrls = Object.fromEntries(
   Object.entries(logoModules).map(([path, url]) => [path.split('/').pop(), url]),
 )
 
-function MembershipFilter() {
+function StewardshipFilter() {
   const [search, setSearch] = useState('')
 
-  const filteredMemberships = useMemo(() => {
+  const filteredStewardships = useMemo(() => {
     const query = search.trim().toLowerCase()
-    return memberships.filter((membership) =>
-      !query || membership.name.toLowerCase().includes(query),
+    return stewardships.filter((stewardship) =>
+      !query || stewardship.name.toLowerCase().includes(query),
     )
   }, [search])
 
@@ -29,31 +29,31 @@ function MembershipFilter() {
             type="search"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Search memberships"
-            aria-label="Search memberships"
+            placeholder="Search stewardships"
+            aria-label="Search stewardships"
           />
         </div>
       </div>
 
-      {filteredMemberships.length === 0 ? (
-        <p className="all-projects-empty">No memberships match your search.</p>
+      {filteredStewardships.length === 0 ? (
+        <p className="all-projects-empty">No stewardships match your search.</p>
       ) : (
         <div className="all-projects-grid">
-          {filteredMemberships.map((membership) => {
-            const logoSrc = membership.logo ? logoUrls[membership.logo] : undefined
+          {filteredStewardships.map((stewardship) => {
+            const logoSrc = stewardship.logo ? logoUrls[stewardship.logo] : undefined
             const content = logoSrc ? (
-              <img className="project-tile-logo" src={logoSrc} alt={membership.name} />
+              <img className="project-tile-logo" src={logoSrc} alt={stewardship.name} />
             ) : (
-              <span className="project-tile-name">{membership.name}</span>
+              <span className="project-tile-name">{stewardship.name}</span>
             )
 
-            if (!membership.href) {
+            if (!stewardship.href) {
               return (
                 <div
                   className="project-tile project-tile-disabled project-tile-no-description"
-                  key={membership.name}
+                  key={stewardship.name}
                   aria-disabled="true"
-                  title={membership.name}
+                  title={stewardship.name}
                 >
                   {content}
                 </div>
@@ -63,11 +63,11 @@ function MembershipFilter() {
             return (
               <a
                 className="project-tile project-tile-no-description"
-                href={membership.href}
-                key={membership.name}
+                href={stewardship.href}
+                key={stewardship.name}
                 target="_blank"
                 rel="noreferrer"
-                title={membership.name}
+                title={stewardship.name}
               >
                 {content}
               </a>
@@ -79,4 +79,4 @@ function MembershipFilter() {
   )
 }
 
-export default MembershipFilter
+export default StewardshipFilter

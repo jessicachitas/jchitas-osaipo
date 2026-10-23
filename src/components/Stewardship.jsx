@@ -1,6 +1,7 @@
-import membershipLogos from "../data/memberships.json";
+import stewardshipLogos from "../data/stewardships.json";
+import projectLogos from "../data/projects.json";
 
-const logoModules = import.meta.glob("../assets/membership-logos/*", {
+const logoModules = import.meta.glob("../assets/logos/*", {
   eager: true,
   import: "default",
 });
@@ -11,7 +12,8 @@ const logoUrls = Object.fromEntries(
   ]),
 );
 
-const membershipsWithLogos = membershipLogos.filter((s) => s.logo);
+const stewardshipsWithLogos = stewardshipLogos.filter((s) => s.logo);
+const projectsWithLogos = projectLogos.filter((s) => s.logo);
 
 function shuffle(list) {
   const result = [...list];
@@ -32,11 +34,7 @@ function LogoRow({ direction, logos }) {
             className="logo-tile"
             key={`${logo.name}-${direction}-${index}`}
           >
-            <img
-              className="logo-tile-mark"
-              src={logoUrls[logo.logo]}
-              alt=""
-            />
+            <img className="logo-tile-mark" src={logoUrls[logo.logo]} alt="" />
           </span>
         ))}
       </div>
@@ -46,34 +44,48 @@ function LogoRow({ direction, logos }) {
 
 const rowDirections = ["left", "right", "left", "right", "left"];
 
-function Membership() {
+function Stewardship() {
   const rows = rowDirections.map((direction) => ({
     direction,
-    logos: shuffle(membershipsWithLogos),
+    logos: shuffle([...stewardshipsWithLogos, ...projectsWithLogos]),
   }));
 
   return (
-    <section className="membership-container" aria-labelledby="h-membership">
-      <div className="container membership-copy">
-        <h1 id="h-membership">Membership</h1>
+    <section className="stewardship-container" aria-labelledby="h-stewardship">
+      <div className="container stewardship-copy">
+        <h1 id="h-stewardship">Open source moves forward together.</h1>
         <p>
-          We believe in shared membership, partnering across the open source
-          ecosystem to build resilient, secure, and sustainable technology
-          together.
+          Through contributions to thousands of open source projects and
+          partnerships across the ecosystem, we help advance AI, cloud, Linux,
+          automation, security, and more—building technology that is resilient,
+          secure, and sustainable.
         </p>
-        <a className="btn-cta btn-cta-primary" href={`${import.meta.env.BASE_URL}memberships.html`}>
-          Learn more
-        </a>
+
+        <div className="stewardship-actions">
+          <a
+            className="btn-cta btn-cta-primary"
+            href={`${import.meta.env.BASE_URL}projects.html`}
+          >
+            Where we build
+          </a>
+
+          <a
+            className="btn-cta btn-cta-primary"
+            href={`${import.meta.env.BASE_URL}stewardships.html`}
+          >
+            Where we steward
+          </a>
+        </div>
       </div>
       <div className="transparent-logo-veil">
-      <div className="logo-wall" aria-hidden="true">
-        {rows.map((row, index) => (
-          <LogoRow key={index} direction={row.direction} logos={row.logos} />
-        ))}
-      </div>
+        <div className="logo-wall" aria-hidden="true">
+          {rows.map((row, index) => (
+            <LogoRow key={index} direction={row.direction} logos={row.logos} />
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-export default Membership;
+export default Stewardship;

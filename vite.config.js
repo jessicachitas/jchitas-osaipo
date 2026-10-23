@@ -19,7 +19,7 @@ export default defineConfig({
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         about: fileURLToPath(new URL('./about.html', import.meta.url)),
         projects: fileURLToPath(new URL('./projects.html', import.meta.url)),
-        memberships: fileURLToPath(new URL('./memberships.html', import.meta.url)),
+        stewardships: fileURLToPath(new URL('./stewardships.html', import.meta.url)),
       },
     },
   },
