@@ -29,18 +29,6 @@ layer(tokens);
 }
 
 @layer base {
-  /* Page typography scales with the window. Everything in the content
-     sections is sized in rem (directly, or via the rem-based
-     --rh-font-size-* tokens), so moving the root size scales all of it from
-     one place. Nav and Footer are pinned back to the unscaled baseline
-     below — they are shared Red Hat components and shouldn't shrink with
-     the page content.
-
-     100% at 1800px and up, interpolating down to 87.5% at 1300px, then flat.
-     Held in % rather than px so a reader who has raised their browser's
-     default font size still gets it. The 55% + 0.4vw middle term is just
-     the line through those two points: 0.4vw is the slope, 55% the
-     intercept. Move either endpoint and that term has to be recomputed. */
   html {
     font-size: 100%;
     @media screen and (max-width: 1800px) {
@@ -48,9 +36,6 @@ layer(tokens);
     }
   }
 
-  /* `rem` is root-relative and can't be rebased per subtree, so the nav and
-     footer are held at the unscaled size by pinning the tokens they consume
-     to absolute px. Values match the token defaults at a 16px root. */
   rh-navigation-primary,
   rh-footer-universal {
     font-size: 16px;
@@ -180,6 +165,7 @@ layer(tokens);
    setup (index.css is loaded once in main.jsx), so keep selectors scoped
    to each component's root id/class to avoid cross-component collisions.
    ========================================================================== */
+
 @layer components {
   /* ---- Nav.jsx (was component-styles/Nav.css) ---- */
   rh-navigation-primary {
@@ -255,8 +241,6 @@ layer(tokens);
       height: fit-content;
     }
 
-    /* Portrait phones: each home section becomes its own full screen
-       instead of keeping the 1920/1000 desktop ratio. */
     @media (max-width: 768px) and (orientation: portrait) {
       aspect-ratio: auto;
       height: auto;
@@ -285,7 +269,6 @@ layer(tokens);
       display: none;
     }
 
-    /* Re-enabled for the full-screen portrait layout below. */
     @media (max-width: 768px) and (orientation: portrait) {
       display: block;
     }
@@ -489,7 +472,6 @@ layer(tokens);
       var(--rh-color-surface-lightest),
       var(--rh-color-interactive-secondary-default-on-dark)
     );
-    /* box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); */
     text-decoration: none;
   }
 
@@ -509,9 +491,6 @@ layer(tokens);
   }
 
   /* ---- Stats.jsx (was component-styles/Stats.css) ---- */
-  /* Modifier used alongside .hero-container on the Stats section, so the
-     shared hero padding/ratio stay defined in one place and only the
-     stats-specific overrides live here. */
   .stats-container {
     @media (max-width: 1300px) {
       padding-inline: var(--rh-space-lg);
@@ -520,8 +499,6 @@ layer(tokens);
       align-items: stretch;
     }
 
-    /* Portrait phones stack as full-screen panels that supply their own
-       vertical centring, so the section must not add padding on top. */
     @media (max-width: 768px) and (orientation: portrait) {
       padding-block-start: 0;
     }
@@ -555,7 +532,7 @@ layer(tokens);
       position: absolute;
       z-index: 1;
       border-radius: 50%;
-      inline-size: 250%;
+      inline-size: 300%;
       inset-inline-start: -75%;
       inset-block-start: 10%;
       aspect-ratio: 1;
@@ -564,6 +541,11 @@ layer(tokens);
         var(--rh-color-surface-dark)
       );
     }
+
+    @media (max-width: 427px) and (orientation: portrait) {
+      inline-size: 250%;
+    }
+
   }
 
   .stat-cluster {
@@ -587,10 +569,6 @@ layer(tokens);
       aspect-ratio: auto;
       min-height: var(--app-vh, 100svh);
       margin-block-end: 0;
-      /* inset-block-start as a % is a no-op here: percentages resolve
-         against the containing block's height, but .hero-container only
-         sets min-height (height stays auto), so the offset computes to 0.
-         transform isn't subject to that and actually shifts the cluster. */
       transform: translateY(-8vh);
     }
   }
@@ -605,9 +583,6 @@ layer(tokens);
     text-align: center;
     color: var(--rh-color-white, #fff);
     font-family: var(--rh-font-family-heading);
-    /* The number/label inside are sized in cqw below — a % of this
-       circle's own width — so the text keeps the exact same proportion to
-       its circle at any size, instead of being tuned per breakpoint. */
     container-type: inline-size;
   }
 
@@ -622,19 +597,12 @@ layer(tokens);
   }
 
   .stat-years {
-    /* One set of values for the whole desktop range. These used to differ
-       above and below 1920px (70%/0/8% vs 65%/2%/10%), which popped the
-       circle 9% wider the moment you crossed 1920. */
     inset-inline-start: 2%;
     inset-block-start: 10%;
     inline-size: 65%;
     aspect-ratio: 1;
     background: var(--rh-color-brand-red);
 
-    /* cqw = % of this circle's own width (see container-type on
-       .stat-circle), so the number keeps this exact proportion to its
-       circle at every size — tablet, phone, or desktop — with no
-       per-breakpoint retuning. */
     strong {
       font-size: 32cqw;
     }
@@ -642,18 +610,12 @@ layer(tokens);
       font-size: 10.7cqw;
     }
 
-    /* Stacked band: the cluster is a 4/3 box, so the circle is sized off
-       width but has to stay inside 0.75W of height. 60% leaves it 8%-88%
-       vertically. */
     @media (max-width: 1300px) {
       inset-inline-start: 2%;
       inset-block-start: 8%;
       inline-size: 60%;
     }
 
-    /* Full-screen portrait layout: centered via top:50% + transform instead
-       of the desktop inset values, so it stays put regardless of how tall
-       the full-screen .stat-cluster section ends up being. */
     @media (max-width: 768px) and (orientation: portrait) {
       inset-inline-start: -20%;
       inset-inline-end: auto;
@@ -714,10 +676,6 @@ layer(tokens);
 
     @media (max-width: 768px) and (orientation: portrait) {
       inset-inline-start: auto;
-      /* "10,000+" is centred in this circle, so every % of bleed past the
-         right edge costs twice that in text clearance. At -10% the label
-         ran off-screen on a 360px phone and was silently cut by
-         .page-content's overflow clip. */
       inset-inline-end: -4%;
       inset-block-start: 55%;
       inset-block-end: auto;
@@ -738,19 +696,9 @@ layer(tokens);
     z-index: 2;
     margin-inline-start: auto;
     inline-size: 100%;
-    /* h1/p below are sized in cqw — a % of this column's own width — so
-       the type scales with the column fluidly instead of stepping at the
-       1300px breakpoint the way a vw-based size would. */
     container-type: inline-size;
-    /* Width tracks the viewport instead of sitting at a fixed rem value:
-       everything else in this section is sized in vw/% off the 1920/1000
-       ratio, so a fixed column was the one piece that grew relatively
-       larger as the window narrowed and collided with the stat bubbles. */
     max-inline-size: min(40rem, 40vw);
     text-align: end;
-    /* Capped at its own value at 1920px rather than switching off above it.
-       As a bare 8vw below 1920 and nothing above, the column jumped 154px
-       right the moment you crossed the breakpoint. */
     margin-inline-end: min(8vw, 154px);
 
     @media screen and (max-width: 1300px) {
@@ -804,15 +752,12 @@ layer(tokens);
     align-items: center;
     justify-content: center;
 
-    /* Without this the section keeps its 1920/1000 ratio on a small
-       landscape phone, leaving a box too short to hold the copy. */
+    
     @media (max-width: 1300px) {
       aspect-ratio: auto;
       min-block-size: 70vh;
     }
 
-    /* Full-screen portrait layout: a taller min-height than the landscape
-       rule above, so declared after it to win. */
     @media (max-width: 768px) and (orientation: portrait) {
       aspect-ratio: auto;
       min-height: var(--app-vh, 100svh);
@@ -853,10 +798,16 @@ layer(tokens);
       margin-inline-start: 0;
       margin-block-start: -110%;
     }
+
+    @media (max-width: 427px) and (orientation: portrait) {
+      margin-block-start: -220%;
+    }
+
+    @media (max-width: 393px) and (orientation: portrait) {
+      margin-block-start: -150%;
+    }
   }
 
-  /* Requested: the two CTAs were bare siblings separated only by collapsed
-     whitespace. */
   .stewardship-actions {
     display: flex;
     flex-wrap: wrap;
@@ -866,7 +817,6 @@ layer(tokens);
     margin-block-start: var(--rh-space-xl);
   }
 
-  /* Pass-through wrapper: the wall itself is the positioned layer. */
   .transparent-logo-veil {
     display: contents;
   }
@@ -931,15 +881,11 @@ layer(tokens);
 
   img.logo-tile-mark {
     inline-size: auto;
-    /* Reserves a width floor before the logo loads, so the row doesn't
-       re-flow under the running animation as images arrive. */
     min-inline-size: 120px;
     max-inline-size: 300px;
     object-fit: contain;
   }
 
-  /* Each row renders its logo set twice, so one set is exactly half the
-     track — travelling 50% loops seamlessly where 25% visibly jumped. */
   @keyframes logo-row-scroll {
     from {
       transform: translateX(0);
@@ -1135,7 +1081,7 @@ layer(tokens);
   .contact-icon-bubble {
     position: absolute;
     inset-inline-start: 59%;
-    inset-block-start: -20%;
+    inset-block-start: -10%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1147,14 +1093,20 @@ layer(tokens);
       var(--rh-color-interactive-secondary-default-on-dark)
     );
 
+    @media screen and (min-width: 1919px) {
+      inset-block-start: -60%;
+    }
+
+    @media screen and (min-width: 1800px) {
+      inset-block-start: -30%;
+    }
+
     @media screen and (max-width: 1300px) {
       display: none;
     }
   }
 
   .contact-send-icon {
-    /* Was a flat 80px above 1920 and 50% below it — a unit-regime flip at
-       the breakpoint. 50% of the bubble at every size instead. */
     inline-size: 50%;
   }
 
@@ -1183,9 +1135,6 @@ layer(tokens);
       ease border-color 0.2s;
   }
 
-  /* The CTAs styled hover but never focus, so keyboard users had no visible
-     position. Neutral rather than brand red, which would disappear against
-     the primary button's own fill. */
   .btn-cta:focus-visible {
     outline: var(--rh-border-width-md, 2px) solid var(--rh-color-text-primary);
     outline-offset: 3px;
@@ -1933,7 +1882,7 @@ layer(tokens);
     inset-block-start: -12vw;
     @media screen and (max-width: 768px) {
       inline-size: 150vw;
-    inset-block-start: -30vw;
+      inset-block-start: -30vw;
     }
   }
 
